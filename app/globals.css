@@ -150,3 +150,38 @@
 @utility text-balance {
   text-wrap: balance;
 }
+
+/* Reader page-scrubber slider — themed across WebKit & Firefox. */
+.reader-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-muted);
+  cursor: pointer;
+  outline: none;
+}
+.reader-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  border: 2px solid var(--color-background);
+  box-shadow: 0 0 0 1px var(--color-primary);
+  transition: transform 0.12s ease;
+}
+.reader-range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+.reader-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  border: 2px solid var(--color-background);
+}
+.reader-range:focus-visible {
+  box-shadow: 0 0 0 2px color-mix(in oklch, var(--color-ring) 60%, transparent);
+}
