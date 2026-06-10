@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Anchor, Compass, Library } from "lucide-react";
+import { Compass, Library } from "lucide-react";
 import { SearchCommand } from "./search-command";
 import { SettingsDialog } from "./settings-dialog";
 import { cn } from "@/lib/utils";
@@ -18,15 +18,9 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-[1760px] items-center gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex shrink-0 items-center gap-2">
-          <span className="grid size-9 place-items-center rounded-lg bg-primary/15 text-primary shadow-glow">
-            <Anchor className="size-5" />
-          </span>
-          <span className="hidden text-lg font-semibold tracking-tight sm:block">
-            Manga{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Harbor
-            </span>
+        <Link href="/" className="flex shrink-0 items-center">
+          <span className="text-lg font-semibold tracking-tight">
+            Manga Harbor
           </span>
         </Link>
 

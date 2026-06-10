@@ -51,7 +51,7 @@ export function HeroCarousel() {
     <section
       aria-roledescription="carousel"
       aria-label="Featured manga"
-      className="group relative h-[440px] overflow-hidden rounded-2xl border border-border/60 bg-surface/30 sm:h-[480px] lg:h-[520px]"
+      className="group relative h-[440px] overflow-hidden bg-surface/30 sm:h-[480px] lg:h-[520px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -183,7 +183,7 @@ export function HeroCarousel() {
 
 function HeroCarouselSkeleton() {
   return (
-    <div className="h-[440px] overflow-hidden rounded-2xl border border-border/60 sm:h-[480px] lg:h-[520px]">
+    <div className="h-[440px] overflow-hidden sm:h-[480px] lg:h-[520px]">
       <div className="flex h-full items-center gap-8 px-6 sm:px-10 lg:px-14">
         <Skeleton className="hidden h-[300px] w-[200px] rounded-xl sm:block lg:h-[360px] lg:w-[240px]" />
         <div className="max-w-xl space-y-4">
