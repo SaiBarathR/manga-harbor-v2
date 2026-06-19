@@ -1,15 +1,9 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  images: {
-    // Cover art is rendered via next/image directly from the MangaDex CDN.
-    // Chapter pages are served through our own /api/image proxy (plain <img>),
-    // so they don't need a remote pattern here.
-    remotePatterns: [
-      { protocol: "https", hostname: "uploads.mangadex.org" },
-      { protocol: "https", hostname: "mangadex.org" },
-    ],
-  },
-};
+// All MangaDex images (covers and chapter pages) are served through our own
+// /api/image proxy via plain <img>, never next/image — so no remotePatterns
+// are needed here. The proxy sets the mandatory MangaDex User-Agent, which the
+// browser can't.
+const nextConfig: NextConfig = {};
 
 export default nextConfig;

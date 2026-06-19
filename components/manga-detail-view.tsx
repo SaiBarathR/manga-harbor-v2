@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { BookOpen, Download, Users, AlertCircle } from "lucide-react";
+import { BookOpen, Download, Users, AlertCircle, ExternalLink } from "lucide-react";
 import { api, proxyUrl, queryKeys } from "@/lib/api";
 import { useSettings } from "@/lib/store/settings";
 import { useDownloadQueue } from "@/lib/store/download-queue";
@@ -179,6 +179,15 @@ export function MangaDetailView({ id }: { id: string }) {
                       </Button>
                     )}
                     <FavoriteButton manga={manga} />
+                    <Button asChild variant="ghost">
+                      <a
+                        href={`https://mangadex.org/title/${manga.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink /> View on MangaDex
+                      </a>
+                    </Button>
                   </div>
                 </>
               ) : (

@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import {
   isAllowedImageUrl,
+  isAllowedReferrer,
   reportImage,
 } from "@/lib/mangadex/image-proxy";
 
@@ -20,6 +21,17 @@ const USER_AGENT =
  * no buffering to disk or memory.
  */
 export async function GET(request: NextRequest) {
+  // Reject cross-site embeds so this can't be used as an open image relay.
+  if (
+    !isAllowedReferrer(
+      request.nextUrl.host,
+      request.headers.get("origin"),
+      request.headers.get("referer"),
+    )
+  ) {
+    return new Response("Forbidden origin", { status: 403 });
+  }
+
   const target = request.nextUrl.searchParams.get("url");
   if (!target || !isAllowedImageUrl(target)) {
     return new Response("Forbidden image host", { status: 403 });

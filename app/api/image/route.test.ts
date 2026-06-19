@@ -20,6 +20,17 @@ describe("GET /api/image", () => {
     expect(res.status).toBe(403);
   });
 
+  it("rejects cross-site embeds via a foreign Referer", async () => {
+    const res = await GET(
+      new NextRequest(
+        "http://localhost/api/image?url=" +
+          encodeURIComponent("https://cdn1.mangadex.network/data/h/1.png"),
+        { headers: { referer: "https://evil.com/hotlink" } },
+      ),
+    );
+    expect(res.status).toBe(403);
+  });
+
   it("proxies an allowed host and sets cache headers", async () => {
     server.use(
       http.get("https://cdn1.mangadex.network/data/h/1.png", () =>
