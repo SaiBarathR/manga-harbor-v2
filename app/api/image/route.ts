@@ -5,6 +5,9 @@ import {
 } from "@/lib/mangadex/image-proxy";
 
 export const dynamic = "force-dynamic";
+// Streaming proxy can outlast the platform default on slow @Home nodes; give it
+// headroom (Vercel Hobby allows up to 60s). Single images normally finish in <2s.
+export const maxDuration = 30;
 
 const USER_AGENT =
   process.env.MANGADEX_USER_AGENT ??
